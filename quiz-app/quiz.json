@@ -1,0 +1,373 @@
+[
+    {
+        "title": "Operating System Quiz",
+        "questions": [
+            {
+                "question": "Which of the following is an example of an operating system?",
+                "options": ["Microsoft Word", "Android", "Google Chrome", "VLC Media Player"],
+                "correctAnswer": "Android"
+            },
+            {
+                "question": "Which operating system is developed by Microsoft?",
+                "options": ["Windows", "Linux", "MacOS", "Android"],
+                "correctAnswer": "Windows"
+            },
+            {
+                "question": "Which is the primary function of an operating system?",
+                "options": ["Provide security", "Control hardware", "Manage software", "All of the above"],
+                "correctAnswer": "All of the above"
+            },
+            {
+                "question": "What is the kernel of an operating system?",
+                "options": ["The user interface", "The core part of the operating system", "The hardware", "The disk management system"],
+                "correctAnswer": "The core part of the operating system"
+            },
+            {
+                "question": "Which of the following is NOT a type of operating system?",
+                "options": ["Multiprocessing", "Multiprogramming", "Hyperthreading", "Batch Processing"],
+                "correctAnswer": "Hyperthreading"
+            },
+            {
+                "question": "Which of the following operating systems is open-source?",
+                "options": ["Windows", "MacOS", "Linux", "iOS"],
+                "correctAnswer": "Linux"
+            },
+            {
+                "question": "Which term is used to describe a computer that provides services to other computers over a network?",
+                "options": ["Server", "Client", "Router", "Switch"],
+                "correctAnswer": "Server"
+            },
+            {
+                "question": "Which of these operating systems is used in Apple's personal computers?",
+                "options": ["Windows", "MacOS", "Linux", "Android"],
+                "correctAnswer": "MacOS"
+            },
+            {
+                "question": "What is the purpose of the command 'ls' in Linux?",
+                "options": ["List files and directories", "Delete files", "Move files", "Change directory"],
+                "correctAnswer": "List files and directories"
+            },
+            {
+                "question": "Which is NOT an operating system type?",
+                "options": ["Single-Tasking", "Multi-Tasking", "Multi-User", "Multi-Core"],
+                "correctAnswer": "Multi-Core"
+            },
+            {
+                "question": "Which operating system is used for mobile devices?",
+                "options": ["Android", "MacOS", "Windows", "iOS"],
+                "correctAnswer": "Android"
+            },
+            {
+                "question": "Which command in Linux is used to check the disk space usage?",
+                "options": ["df", "du", "ls", "cp"],
+                "correctAnswer": "df"
+            },
+            {
+                "question": "Which part of an operating system manages the hardware resources?",
+                "options": ["Kernel", "Shell", "GUI", "User Interface"],
+                "correctAnswer": "Kernel"
+            },
+            {
+                "question": "Which operating system is primarily used for servers?",
+                "options": ["Windows Server", "MacOS", "Linux", "Android"],
+                "correctAnswer": "Linux"
+            },
+            {
+                "question": "Which of the following is NOT a version of the Windows operating system?",
+                "options": ["Windows 10", "Windows 11", "Windows XP", "Windows Android"],
+                "correctAnswer": "Windows Android"
+            },
+            {
+                "question": "What is a process in an operating system?",
+                "options": ["A program being executed", "A hardware device", "A system error", "A user input"],
+                "correctAnswer": "A program being executed"
+            },
+            {
+                "question": "Which of the following is used to execute programs in Unix-like operating systems?",
+                "options": ["Bash", "Terminal", "PowerShell", "Command Prompt"],
+                "correctAnswer": "Bash"
+            },
+            {
+                "question": "What is the file system used by Linux operating systems?",
+                "options": ["NTFS", "FAT32", "ext4", "HFS+"],
+                "correctAnswer": "ext4"
+            },
+            {
+                "question": "What does GUI stand for in operating systems?",
+                "options": ["General User Interface", "Graphical User Interface", "Global User Interface", "Graphical Unified Interface"],
+                "correctAnswer": "Graphical User Interface"
+            }
+        ]
+    }
+    ,
+    {
+        "title": "Networking Quiz",
+        "questions": [
+            {
+                "question": "Which protocol is used to send emails?",
+                "options": ["SMTP", "HTTP", "FTP", "POP3"],
+                "correctAnswer": "SMTP"
+            },
+            {
+                "question": "What does IP stand for?",
+                "options": ["Internet Protocol", "Internal Protocol", "Internet Provider", "Internal Provider"],
+                "correctAnswer": "Internet Protocol"
+            },
+            {
+                "question": "Which of the following is an IPv4 address?",
+                "options": ["192.168.0.1", "2001:0db8:85a3:0000:0000:8a2e:0370:7334", "FE80::0202:B3FF:FE1E:8329", "::1"],
+                "correctAnswer": "192.168.0.1"
+            },
+            {
+                "question": "What is the maximum size of an Ethernet frame?",
+                "options": ["1500 bytes", "1024 bytes", "2048 bytes", "500 bytes"],
+                "correctAnswer": "1500 bytes"
+            },
+            {
+                "question": "Which protocol is used for secure communication over the internet?",
+                "options": ["HTTP", "FTP", "HTTPS", "SMTP"],
+                "correctAnswer": "HTTPS"
+            },
+            {
+                "question": "What is the function of a router?",
+                "options": ["Directs traffic between networks", "Connects devices to the internet", "Secures networks", "None of the above"],
+                "correctAnswer": "Directs traffic between networks"
+            },
+            {
+                "question": "Which device connects multiple devices in a network and forwards data between them?",
+                "options": ["Hub", "Switch", "Router", "Modem"],
+                "correctAnswer": "Switch"
+            },
+            {
+                "question": "What is the full form of DNS?",
+                "options": ["Domain Name System", "Dynamic Name Server", "Direct Network Server", "Domain Network Service"],
+                "correctAnswer": "Domain Name System"
+            },
+            {
+                "question": "Which protocol is used for remote access to network devices?",
+                "options": ["Telnet", "FTP", "SMTP", "HTTP"],
+                "correctAnswer": "Telnet"
+            },
+            {
+                "question": "What does LAN stand for?",
+                "options": ["Local Area Network", "Large Area Network", "Long Area Network", "Local Active Network"],
+                "correctAnswer": "Local Area Network"
+            },
+            {
+                "question": "What is the purpose of a firewall?",
+                "options": ["To protect a network from unauthorized access", "To monitor traffic", "To route traffic", "To manage devices"],
+                "correctAnswer": "To protect a network from unauthorized access"
+            },
+            {
+                "question": "What is the main function of the Transport Layer in networking?",
+                "options": ["Routing packets", "Establishing connections", "Providing end-to-end communication", "Encrypting data"],
+                "correctAnswer": "Providing end-to-end communication"
+            },
+            {
+                "question": "Which protocol does HTTPS use for encryption?",
+                "options": ["SSL/TLS", "IPSec", "SSH", "PPTP"],
+                "correctAnswer": "SSL/TLS"
+            },
+            {
+                "question": "Which device is responsible for converting digital signals to analog for transmission over phone lines?",
+                "options": ["Modem", "Router", "Switch", "Hub"],
+                "correctAnswer": "Modem"
+            },
+            {
+                "question": "What does VPN stand for?",
+                "options": ["Virtual Private Network", "Virtual Public Network", "Viral Private Network", "Virtual Port Network"],
+                "correctAnswer": "Virtual Private Network"
+            },
+            {
+                "question": "Which layer of the OSI model deals with the physical transmission of data?",
+                "options": ["Data Link", "Network", "Physical", "Transport"],
+                "correctAnswer": "Physical"
+            },
+            {
+                "question": "What does a MAC address identify?",
+                "options": ["Network device", "IP address", "Router", "Subnet"],
+                "correctAnswer": "Network device"
+            },
+            {
+                "question": "What does the term 'ping' refer to in networking?",
+                "options": ["A network diagnostic tool", "A type of virus", "A method of securing data", "None of the above"],
+                "correctAnswer": "A network diagnostic tool"
+            }
+        ]
+    },
+    {
+        "title": "HTML/CSS Quiz",
+        "questions": [
+            {
+                "question": "Which tag is used to define a hyperlink in HTML?",
+                "options": ["<a>", "<link>", "<href>", "<h1>"],
+                "correctAnswer": "<a>"
+            },
+            {
+                "question": "Which HTML element is used to define important text?",
+                "options": ["<strong>", "<em>", "<bold>", "<i>"],
+                "correctAnswer": "<strong>"
+            },
+            {
+                "question": "Which CSS property is used to change the background color of an element?",
+                "options": ["color", "background-color", "bg-color", "bg"],
+                "correctAnswer": "background-color"
+            },
+            {
+                "question": "Which tag is used to insert an image in HTML?",
+                "options": ["<img>", "<picture>", "<image>", "<src>"],
+                "correctAnswer": "<img>"
+            },
+            {
+                "question": "What does CSS stand for?",
+                "options": ["Cascading Style Sheets", "Computer Style Sheets", "Colorful Style Sheets", "Creative Style Sheets"],
+                "correctAnswer": "Cascading Style Sheets"
+            },
+            {
+                "question": "Which HTML tag is used to define a table?",
+                "options": ["<table>", "<thead>", "<body>", "<tr>"],
+                "correctAnswer": "<table>"
+            },
+            {
+                "question": "Which CSS property is used to change the text color of an element?",
+                "options": ["color", "font-color", "text-color", "bg-color"],
+                "correctAnswer": "color"
+            },
+            {
+                "question": "Which CSS property is used to add space inside an element?",
+                "options": ["margin", "padding", "border", "spacing"],
+                "correctAnswer": "padding"
+            },
+            {
+                "question": "Which attribute is used to provide a text description of an image in HTML?",
+                "options": ["alt", "title", "desc", "text"],
+                "correctAnswer": "alt"
+            },
+            {
+                "question": "Which property is used to set the font size in CSS?",
+                "options": ["font-size", "text-size", "font-style", "text-font"],
+                "correctAnswer": "font-size"
+            },
+            {
+                "question": "Which tag is used to define an unordered list in HTML?",
+                "options": ["<ul>", "<ol>", "<li>", "<list>"],
+                "correctAnswer": "<ul>"
+            },
+            {
+                "question": "Which property is used to change the alignment of text in CSS?",
+                "options": ["align", "text-align", "justify", "text-position"],
+                "correctAnswer": "text-align"
+            },
+            {
+                "question": "Which property is used to change the border style in CSS?",
+                "options": ["border-style", "border-width", "border-color", "border-all"],
+                "correctAnswer": "border-style"
+            },
+            {
+                "question": "Which HTML element is used to define a form in HTML?",
+                "options": ["<form>", "<input>", "<button>", "<fieldset>"],
+                "correctAnswer": "<form>"
+            },
+            {
+                "question": "Which CSS property is used to control the visibility of an element?",
+                "options": ["visibility", "display", "opacity", "show"],
+                "correctAnswer": "visibility"
+            },
+            {
+                "question": "What is the correct HTML element for playing a sound file?",
+                "options": ["<audio>", "<sound>", "<media>", "<video>"],
+                "correctAnswer": "<audio>"
+            },
+            {
+                "question": "What is the correct syntax for referring to an external script file in HTML?",
+                "options": ["<script src='script.js'>", "<script href='script.js'>", "<script name='script.js'>", "<script file='script.js'>"],
+                "correctAnswer": "<script src='script.js'>"
+            },
+            {
+                "question": "Which property is used to change the font family in CSS?",
+                "options": ["font-family", "text-font", "font-type", "font-style"],
+                "correctAnswer": "font-family"
+            }
+        ]
+    },
+    {
+        "title": "JavaScript Quiz",
+        "questions": [
+            {
+                "question": "Which of the following is a JavaScript data type?",
+                "options": ["Number", "Boolean", "String", "All of the above"],
+                "correctAnswer": "All of the above"
+            },
+            {
+                "question": "What is the correct syntax to declare a JavaScript variable?",
+                "options": ["var x;", "let x;", "const x;", "All of the above"],
+                "correctAnswer": "All of the above"
+            },
+            {
+                "question": "Which operator is used to assign a value to a variable in JavaScript?",
+                "options": ["=", "==", "===", ":="],
+                "correctAnswer": "="
+            },
+            {
+                "question": "Which method is used to add an element to the end of an array in JavaScript?",
+                "options": ["push()", "pop()", "shift()", "unshift()"],
+                "correctAnswer": "push()"
+            },
+            {
+                "question": "What does 'NaN' stand for in JavaScript?",
+                "options": ["Not a Number", "Number and Null", "Not a Name", "Null and Not"],
+                "correctAnswer": "Not a Number"
+            },
+            {
+                "question": "Which of the following is used to define a function in JavaScript?",
+                "options": ["function name()", "def name()", "function: name()", "fn name()"],
+                "correctAnswer": "function name()"
+            },
+            {
+                "question": "Which statement is used to stop a loop in JavaScript?",
+                "options": ["exit", "break", "stop", "continue"],
+                "correctAnswer": "break"
+            },
+            {
+                "question": "Which method is used to find the length of a string in JavaScript?",
+                "options": ["length()", "size()", "getSize()", "length"],
+                "correctAnswer": "length"
+            },
+            {
+                "question": "What does the 'this' keyword refer to in JavaScript?",
+                "options": ["Current object", "Global object", "Previous object", "None of the above"],
+                "correctAnswer": "Current object"
+            },
+            {
+                "question": "Which of the following is a correct way to create an object in JavaScript?",
+                "options": ["var obj = {}", "var obj = new Object()", "Both a and b", "None of the above"],
+                "correctAnswer": "Both a and b"
+            },
+            {
+                "question": "Which method is used to remove the last element from an array in JavaScript?",
+                "options": ["pop()", "push()", "shift()", "unshift()"],
+                "correctAnswer": "pop()"
+            },
+            {
+                "question": "Which of the following is not a valid JavaScript loop?",
+                "options": ["for", "while", "foreach", "do while"],
+                "correctAnswer": "foreach"
+            },
+            {
+                "question": "What is the result of 2 + '2' in JavaScript?",
+                "options": ["4", "22", "Error", "Undefined"],
+                "correctAnswer": "22"
+            },
+            {
+                "question": "Which method is used to parse a string into an integer in JavaScript?",
+                "options": ["parseInt()", "toInt()", "parseFloat()", "toInteger()"],
+                "correctAnswer": "parseInt()"
+            },
+            {
+                "question": "Which of the following is true about JavaScript?",
+                "options": ["JavaScript is a compiled language", "JavaScript is an interpreted language", "JavaScript is only used for web development", "None of the above"],
+                "correctAnswer": "JavaScript is an interpreted language"
+            }
+        ]
+    }
+]
