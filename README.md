@@ -49,7 +49,7 @@ Below are the screenshots of different screens in the app:
 
 Here is a video demonstration of the app:
 
-![video](./)
+![video](./quiz-app/media/video.mp4)
 
 ### Prerequisites
 Make sure you have the following installed:
