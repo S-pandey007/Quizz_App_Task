@@ -34,16 +34,16 @@ This is a React Native Quiz App that provides users with multiple-choice aptitud
 
 Below are the screenshots of different screens in the app:
 
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-39-03-287_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-39-10-954_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-43-59-539_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-44-21-542_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-45-04-835_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-45-12-180_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-46-06-758_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-46-11-833_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-47-13-776_host.exp.exponent.jpg)
-![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-47-50-354_host.exp.exponent.jpg)
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-39-03-287_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-39-10-954_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-43-59-539_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-44-21-542_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-45-04-835_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-45-12-180_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-46-06-758_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-46-11-833_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-47-13-776_host.exp.exponent.jpg" width="300" />
+<img src="./quiz-app/media/Screenshot_2025-01-02-19-47-50-354_host.exp.exponent.jpg" width="300" />
 
 
 ### Prerequisites
