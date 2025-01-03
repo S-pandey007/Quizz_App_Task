@@ -34,24 +34,17 @@ This is a React Native Quiz App that provides users with multiple-choice aptitud
 
 Below are the screenshots of different screens in the app:
 
-### Home Screen:
-![Home Screen](path/to/home-screen.png)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-39-03-287_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-39-10-954_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-43-59-539_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-44-21-542_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-45-04-835_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-45-12-180_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-46-06-758_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-46-11-833_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-47-13-776_host.exp.exponent.jpg)
+![Home Screen](./quiz-app/media/Screenshot_2025-01-02-19-47-50-354_host.exp.exponent.jpg)
 
-### Quiz Screen:
-![Quiz Screen](path/to/quiz-screen.png)
-
-### Results Screen:
-![Results Screen](path/to/results-screen.png)
-
-## Screen Recording
-
-Watch the demo of the app in action:
-
-[![Quiz App Demo](path/to/screen-recorder-thumbnail.png)](path/to/screen-recorder-video.mp4)
-
-## Installation
-
-Follow these steps to run the app locally on your device:
 
 ### Prerequisites
 Make sure you have the following installed:
