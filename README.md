@@ -45,6 +45,14 @@ Below are the screenshots of different screens in the app:
 <img src="./quiz-app/media/Screenshot_2025-01-02-19-47-13-776_host.exp.exponent.jpg" width="300" />
 <img src="./quiz-app/media/Screenshot_2025-01-02-19-47-50-354_host.exp.exponent.jpg" width="300" />
 
+## Video Demonstration
+
+Here is a video demonstration of the app:
+
+<video width="300" controls>
+  <source src="./quiz-app/media/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ### Prerequisites
 Make sure you have the following installed:
