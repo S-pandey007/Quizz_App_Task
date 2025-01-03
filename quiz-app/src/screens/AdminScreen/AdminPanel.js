@@ -1,35 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import {
-    View,
-    Text,
-    StyleSheet,
-    FlatList,
-    TextInput,
-    Button,
-    Alert,
-    Modal,
-    TouchableOpacity,
-    Pressable,
-    ScrollView,
-} from 'react-native';
+import { View, Text, TextInput, Button, Modal, StyleSheet, Alert, TouchableOpacity, FlatList, Pressable } from 'react-native';
 import axios from 'axios';
-import Entypo from '@expo/vector-icons/Entypo';
-import AntDesign from '@expo/vector-icons/AntDesign';
-// import Entypo from '@expo/vector-icons/Entypo';
+import { Ionicons, Entypo } from '@expo/vector-icons'; // Make sure you have installed @expo/vector-icons
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 
-const AdminPanelScreen = () => {
-    const [quizzes, setQuizzes] = useState([]);
+const AdminPanel = () => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [quizModalVisible, setQuizModalVisible] = useState(false);
     const [newQuizTitle, setNewQuizTitle] = useState('');
-    const [newQuestion, setNewQuestion] = useState([]);
+    const [newQuestion, setNewQuestion] = useState('');
     const [newOptions, setNewOptions] = useState(['', '', '', '']);
     const [correctAnswer, setCorrectAnswer] = useState('');
-    const [Quizmodal, setQuizmodal] = useState(false);
-    const [questions, setQuestions] = useState([]); 
-    const [currentStep, setCurrentStep] = useState('title');
+    const [questions, setQuestions] = useState([]);
+    const [quizzes, setQuizzes] = useState([]);
+    const [selectedQuiz, setSelectedQuiz] = useState(null);
     const navigation = useNavigation();
+
     useEffect(() => {
         fetchQuizzes();
     }, []);
@@ -43,24 +30,26 @@ const AdminPanelScreen = () => {
         }
     };
 
+    const handleAddQuestion = () => {
+        if (!newQuestion || !correctAnswer || newOptions.includes('')) {
+            Alert.alert('Error', 'Please fill out all fields for the question.');
+            return;
+        }
 
-    const addNewQuestion = () => {
-        setQuestions([...questions, {
-            question: '',
-            options: ['', '', '', ''],
-            correctAnswer: '',
-        }]);
+        const newQuestionObject = {
+            question: newQuestion,
+            options: newOptions,
+            correctAnswer: correctAnswer,
+        };
+
+        setQuestions([...questions, newQuestionObject]); // Add the new question to the list
+        resetQuestionFields(); // Reset question fields for the next input
     };
 
-    const updateQuestion = (index, field, value) => {
-        const updatedQuestions = [...questions];
-        if (field === 'option') {
-            const [optionIndex, optionValue] = value;
-            updatedQuestions[index].options[optionIndex] = optionValue;
-        } else {
-            updatedQuestions[index][field] = value;
-        }
-        setQuestions(updatedQuestions);
+    const resetQuestionFields = () => {
+        setNewQuestion('');
+        setNewOptions(['', '', '', '']);
+        setCorrectAnswer('');
     };
 
     const handleAddQuiz = async () => {
@@ -69,41 +58,19 @@ const AdminPanelScreen = () => {
             return;
         }
 
-        // Validate all questions
-        for (const question of questions) {
-            if (!question.question || !question.correctAnswer || question.options.includes('')) {
-                Alert.alert('Error', 'Please fill out all fields for each question.');
-                return;
-            }
-        }
-
-        const formattedQuestions = questions.map(q => ({
-            question: q.question,
-            options: q.options,
-            correctAnswer: q.correctAnswer // This should be the actual answer text, not the index
-        }));
-
         const newQuiz = {
             title: newQuizTitle,
-            questions: formattedQuestions,
+            questions: questions, // Use the list of questions
         };
-        console.log('Adding new quiz:', newQuiz);
 
         try {
-            console.log('Submitting quiz:', newQuiz); // For debugging
-            const response =  await axios.put('http://192.168.43.3:8000/api/quizzes', newQuiz,{
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            console.log("response",response.data);
-            Alert.alert('Success', 'Quiz added successfully.');
-            fetchQuizzes();
-            setModalVisible(false);
+            await axios.post('http://192.168.43.3:8000/api/quizzes', newQuiz);
+            Alert.alert('Success', 'Quiz added successfully!');
+            fetchQuizzes(); // Refresh the list
+            setModalVisible(false); // Close modal
             resetFields();
         } catch (error) {
-            // console.error('Error adding quiz:', error);
-            console.error('Error details:', error.response?.data || error.message);
+            console.error('Error adding quiz:', error);
             Alert.alert('Error', 'Failed to add quiz.');
         }
     };
@@ -111,80 +78,17 @@ const AdminPanelScreen = () => {
     const resetFields = () => {
         setNewQuizTitle('');
         setQuestions([]);
-        setCurrentStep('title');
+        resetQuestionFields();
     };
-
-    const renderQuestionForm = (question, index) => (
-        <View key={index} style={styles.questionBox}>
-            <Text style={styles.questionNumber}>Question {index + 1}</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Enter question"
-                value={question.question}
-                onChangeText={(text) => updateQuestion(index, 'question', text)}
-            />
-
-            {question.options.map((option, optionIndex) => (
-                <View key={optionIndex} style={styles.optionContainer}>
-                    <TextInput
-                        style={styles.optionInput}
-                        placeholder={`Option ${optionIndex + 1}`}
-                        value={option}
-                        onChangeText={(text) => 
-                            updateQuestion(index, 'option', [optionIndex, text])
-                        }
-                    />
-                    <TouchableOpacity
-                        style={[
-                            styles.radioButton,
-                            question.correctAnswer === option && styles.radioButtonSelected,
-                        ]}
-                        onPress={() => updateQuestion(index, 'correctAnswer', option)}
-                    />
-                </View>
-            ))}
-        </View>
-    ); 
-    
-
-
 
     const renderQuiz = ({ item }) => (
         <View style={styles.quizCard}>
-            <Pressable onPress={() => setQuizmodal(true)}>
+            <Pressable onPress={() => {
+                setSelectedQuiz(item);
+                setQuizModalVisible(true);
+            }}>
                 <Text style={styles.quizTitle}>{item.title}</Text>
             </Pressable>
-            <Modal
-                visible={Quizmodal}
-                animationType="slide"
-                onRequestClose={() => setQuizmodal(false)}
-            >
-                <View style={styles.modalContainer}>
-                    <Pressable onPress={() => setQuizmodal(false)}>
-                        <Entypo name="circle-with-cross" size={28} color="black" />
-                    </Pressable>
-                    <FlatList
-                        data={item.questions}
-                        keyExtractor={(q, index) => index.toString()}
-                        renderItem={({ item: question }) => (
-                            <View style={styles.questionContainer}>
-                                <Text style={styles.questionText}>{question.question}</Text>
-                                {question.options.map((option, index) => (
-                                    <Text
-                                        key={index}
-                                        style={[
-                                            styles.optionText,
-                                            question.correctAnswer === option && styles.correctAnswer,
-                                        ]}
-                                    >
-                                        {index + 1}. {option}
-                                    </Text>
-                                ))}
-                            </View>
-                        )}
-                    />
-                </View>
-            </Modal>
         </View>
     );
 
@@ -201,8 +105,8 @@ const AdminPanelScreen = () => {
             </View>
             <FlatList
                 data={quizzes}
-                keyExtractor={(item) => item._id}
                 renderItem={renderQuiz}
+                keyExtractor={(item, index) => index.toString()}
                 style={styles.list}
             />
 
@@ -219,59 +123,96 @@ const AdminPanelScreen = () => {
                 onRequestClose={() => setModalVisible(false)}
             >
                 <View style={styles.modalContainer}>
-                    <ScrollView>
-                        {currentStep === 'title' ? (
-                            <View>
-                                <Text style={styles.modalHeader}>Add New Quiz</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Quiz Title"
-                                    value={newQuizTitle}
-                                    onChangeText={setNewQuizTitle}
-                                />
-                                <TouchableOpacity
-                                    style={styles.nextButton}
-                                    onPress={() => setCurrentStep('questions')}
-                                >
-                                    <Text style={styles.buttonText}>Next</Text>
-                                </TouchableOpacity>
-                            </View>
-                        ) : (
-                            <View>
-                                <Text style={styles.modalHeader}>{newQuizTitle}</Text>
-                                {questions.map((question, index) =>
-                                    renderQuestionForm(question, index)
-                                )}
-                                <TouchableOpacity
-                                    style={styles.addQuestionButton}
-                                    onPress={addNewQuestion}
-                                >
-                                    <AntDesign name="pluscircleo" size={24} color="black" />
-                                    <Text style={styles.addQuestionText}>Add Question</Text>
-                                </TouchableOpacity>
-                                <View style={styles.buttonContainer}>
-                                    <TouchableOpacity
-                                        style={styles.submitButton}
-                                        onPress={handleAddQuiz}
-                                    >
-                                        <Text style={styles.buttonText}>Submit Quiz</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        style={styles.cancelButton}
-                                        onPress={() => {
-                                            setModalVisible(false);
-                                            resetFields();
-                                        }}
-                                    >
-                                        <Text style={styles.buttonText}>Cancel</Text>
-                                    </TouchableOpacity>
-                                </View>
+                    <TouchableOpacity style={styles.closeButton} onPress={() => setModalVisible(false)}>
+                        <Ionicons name="close" size={24} color="black" />
+                    </TouchableOpacity>
+                    <Text style={styles.modalHeader}>Add New Quiz</Text>
+
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Quiz Title"
+                        value={newQuizTitle}
+                        onChangeText={setNewQuizTitle}
+                    />
+
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Question"
+                        value={newQuestion}
+                        onChangeText={setNewQuestion}
+                    />
+
+                    {newOptions.map((option, index) => (
+                        <TextInput
+                            key={index}
+                            style={styles.input}
+                            placeholder={`Option ${index + 1}`}
+                            value={option}
+                            onChangeText={text => {
+                                const newOptionsCopy = [...newOptions];
+                                newOptionsCopy[index] = text;
+                                setNewOptions(newOptionsCopy);
+                            }}
+                        />
+                    ))}
+
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Correct Answer"
+                        value={correctAnswer}
+                        onChangeText={setCorrectAnswer}
+                    />
+
+                    <Button title="Add Question" onPress={handleAddQuestion} />
+
+                    <FlatList
+                        data={questions}
+                        renderItem={({ item }) => (
+                            <View style={styles.questionItem}>
+                                <Text style={styles.questionText}>{item.question}</Text>
                             </View>
                         )}
-                    </ScrollView>
+                        keyExtractor={(item, index) => index.toString()}
+                        style={styles.questionList}
+                    />
+
+                    <Button title="Add Quiz" onPress={handleAddQuiz} />
                 </View>
             </Modal>
 
+            <Modal
+                visible={quizModalVisible}
+                animationType="slide"
+                onRequestClose={() => setQuizModalVisible(false)}
+            >
+                <View style={styles.modalContainer}>
+                    <TouchableOpacity style={styles.closeButton} onPress={() => setQuizModalVisible(false)}>
+                        <Entypo name="circle-with-cross" size={28} color="black" />
+                    </TouchableOpacity>
+                    {selectedQuiz && (
+                        <FlatList
+                            data={selectedQuiz.questions}
+                            keyExtractor={(q, index) => index.toString()}
+                            renderItem={({ item: question }) => (
+                                <View style={styles.questionContainer}>
+                                    <Text style={styles.questionText}>{question.question}</Text>
+                                    {question.options.map((option, index) => (
+                                        <Text
+                                            key={index}
+                                            style={[
+                                                styles.optionText,
+                                                question.correctAnswer === option && styles.correctAnswer,
+                                            ]}
+                                        >
+                                            {index + 1}. {option}
+                                        </Text>
+                                    ))}
+                                </View>
+                            )}
+                        />
+                    )}
+                </View>
+            </Modal>
         </View>
     );
 };
@@ -440,7 +381,26 @@ const styles = StyleSheet.create({
       },
       Leadericon: {
         padding: 10,
-      }
+      },
+    questionItem: {
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+    },
+    questionList: {
+        width: '100%',
+        marginTop: 20,
+    },
+    closeButton: {
+        alignSelf: 'flex-end',
+    },
+    modalContent: {
+        width: '80%',
+        backgroundColor: 'white',
+        borderRadius: 10,
+        padding: 20,
+        alignItems: 'center',
+    },
 });
 
-export default AdminPanelScreen;
+export default AdminPanel;
