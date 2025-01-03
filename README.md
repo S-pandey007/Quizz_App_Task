@@ -49,10 +49,7 @@ Below are the screenshots of different screens in the app:
 
 Here is a video demonstration of the app:
 
-<video width="300" controls>
-  <source src="./" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![video](./)
 
 ### Prerequisites
 Make sure you have the following installed:
