@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Button, StyleSheet, ActivityIndicator } from 'react-native';
 import axios from 'axios';
+import User from '../model/UserModel';
 
 const QuizScreen = ({ route, navigation }) => {
-    const { title } = route.params;
+    const {name, title } = route.params;
     const [quizData, setQuizData] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -37,13 +38,17 @@ const QuizScreen = ({ route, navigation }) => {
         try {
             setLoading(true);
             setError(null);
-            const response = await axios.get("http://192.168.43.3:8000/api/quizzes");
+            console.log("user name : ",name);
             
-            if (!response.data || !response.data.questions || !response.data.questions.length) {
-                throw new Error('Invalid quiz data received');
+            console.log('Fetching quiz data with title:', title);
+            
+            const response = await axios.get(`http://192.168.43.3:8000/api/quizzes/${encodeURIComponent(title)}`);
+            if (response.status !== 200) {
+                throw new Error('Network response was not ok');
             }
-            
-            setQuizData(response.data);
+            const data = response.data;
+            // console.log('Fetched quiz data:', data);
+            setQuizData(data);
         } catch (error) {
             console.error('Error fetching quiz data:', error);
             setError(error.message || 'Failed to load quiz data');
@@ -52,13 +57,13 @@ const QuizScreen = ({ route, navigation }) => {
         }
     };
 
-    const handleOptionSelect = (option) => {
+    const handleOptionSelect =  (option) => {
         if (timer > 0) {
             setSelectedOption(option);
         }
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
         if (!quizData || !quizData.questions) return;
 
         const currentQuestion = quizData.questions[currentQuestionIndex];
@@ -80,14 +85,42 @@ const QuizScreen = ({ route, navigation }) => {
         if (currentQuestionIndex < quizData.questions.length - 1) {
             setCurrentQuestionIndex(prev => prev + 1);
         } else {
-            navigation.navigate('ResultScreen', { 
+            // Calculate the total score 
+            const totalScore = [...results, {
+                question: currentQuestion.question,
+                selected: selectedOption,
+                correctAnswer: currentQuestion.correctAnswer,
+                isCorrect: selectedOption === currentQuestion.correctAnswer
+            }].reduce((score, result) => score + (result.isCorrect ? 1 : 0), 0);
+
+            console.log("Total Score:", totalScore);
+
+            // Send data to result screen 
+            navigation.navigate('ResultScreen', {
+                name,
+                title,
                 results: [...results, {
                     question: currentQuestion.question,
                     selected: selectedOption,
                     correctAnswer: currentQuestion.correctAnswer,
                     isCorrect: selectedOption === currentQuestion.correctAnswer
-                }]
+                }],
+                totalScore,
             });
+
+            // Data send to backend 
+            const userData = {
+                name,
+                selectedTopic: title,
+                score: totalScore
+            };
+
+            try {
+                const response = await axios.post("http://192.168.43.3:8000/api/save-user", userData);
+                console.log('Data saved successfully:', response.data);
+            } catch (error) {
+                console.error('Error saving data:', error);
+            }
         }
     };
 

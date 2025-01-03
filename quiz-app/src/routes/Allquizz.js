@@ -2,9 +2,10 @@
 
 const express = require('express');
 const QuizeModel = require("../model/QuizModel");
-
+const User = require("../model/UserModel");
 const router = express.Router();
 
+// Endpoint to fetch all quizzes
 router.get('/quizzes', async (req, res) => {
     try {
         const quizzes = await QuizeModel.find();
@@ -14,6 +15,7 @@ router.get('/quizzes', async (req, res) => {
     }
 });
 
+// Endpoint to fetch all quiz titles
 router.get('/quiz-titles', async (req, res) => {
     try {
         const quizzes = await QuizeModel.find({}, 'title');
@@ -41,3 +43,38 @@ router.get('/quizzes/:title', async (req, res) => {
         res.status(500).json({ message: 'Error fetching quiz data.', error: error.message });
     }
 });
+
+
+// Endpoint to save user quiz data
+router.post('/save-user', async (req, res) => {
+    try {
+        const { name, selectedTopic, score } = req.body;
+        const user = new User({ name, selectedTopic, score });
+        await user.save();
+        res.status(201).json(user);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+ });
+
+
+ router.get('/leaderboard', async (req, res) => {
+    try {
+        const user = await User.find();
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+router.put('/quizzes', async (req, res) => {
+    try {
+        const newQuizzes = await QuizeModel.insertMany(req.body); 
+        res.json(newQuizzes);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+module.exports = router;

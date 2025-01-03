@@ -28,7 +28,7 @@ export default function HomeScreen() {
             selectedTitle: selectedTitle
         };
         console.log(userData);
-        navigation.navigate('Quiz', { title: selectedTitle });
+        navigation.navigate('Quiz', {name: userData.userName,title:userData.selectedTitle});
     };
 
     const renderItem = ({ item }) => (
@@ -47,21 +47,6 @@ export default function HomeScreen() {
                 <Text style={styles.headerText}>Welcome to the New Quiz</Text>
             </View>
 
-            {/* Rules */}
-            <View style={styles.rulesContainer}>
-                <Text style={styles.rulesHeader}>Rules</Text>
-                <View style={styles.rulesTextContainer}>
-                    <Text style={styles.rulesText}>
-                        1. Question Type: Multiple Choice Questions (MCQs)
-                        {'\n'}2. Users must enter their full name before starting
-                        {'\n'}3. Marking Scheme: 1 mark per correct answer
-                        {'\n'}4. Time Limit: 15 seconds per question
-                        {'\n'}5. Users can choose from available quiz topics
-                        {'\n'}6. Immediate score display after quiz
-                        {'\n'}7. Leaderboard ranking
-                    </Text>
-                </View>
-            </View>
 
                        {/* Take user name */}
             <View style={styles.inputContainer}>
@@ -88,9 +73,28 @@ export default function HomeScreen() {
             </View>
 
 
+            {/* Rules */}
+            <View style={styles.rulesContainer}>
+                <Text style={styles.rulesHeader}>Rules</Text>
+                <View style={styles.rulesTextContainer}>
+                    <Text style={styles.rulesText}>
+                        1. Question Type: Multiple Choice Questions (MCQs)
+                        {'\n'}2. Users must enter their full name before starting
+                        {'\n'}3. Marking Scheme: 1 mark per correct answer
+                        {'\n'}4. Time Limit: 15 seconds per question
+                        {'\n'}5. Users can choose from available quiz topics
+                        {'\n'}6. Immediate score display after quiz
+                        {'\n'}7. Leaderboard ranking
+                    </Text>
+                </View>
+            </View>
 
             <Pressable style={styles.startButton} onPress={handleStartQuiz}>
                 <Text style={styles.startButtonText}>Start Quiz</Text>
+            </Pressable>
+
+            <Pressable onPress={()=>navigation.navigate('AdminLogin')} style={{marginTop:10}}>
+                <Text style={{textAlign:'center',marginTop:10,fontSize:16,color:'#007bff'}}>Admin Panel</Text>
             </Pressable>
         </View>
     );
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
     },
     header: {
-        marginBottom: 20,
+        marginBottom: 30,
         top:15,
         backgroundColor:'#007bff',borderRadius:7,
     },

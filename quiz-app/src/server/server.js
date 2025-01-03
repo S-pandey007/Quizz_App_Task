@@ -1,11 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const allQuizzRoutes = require('../routes/Allquizz'); // Import the route
 const app = express();
+const PORT = process.env.PORT || 8000;
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use('/api', allQuizzRoutes); // Use the route
 
@@ -13,7 +17,7 @@ app.get('/', (req, res) => {
     res.send('Server is running');
 });
 
-// Direct MongoDB URI
+// MongoDB URI
 const MONGODB_URI = 'mongodb+srv://user:user@quizapp.hmm0f.mongodb.net/?retryWrites=true&w=majority';
 
 // Check if the MongoDB URI is provided
@@ -23,7 +27,7 @@ if (!MONGODB_URI) {
 }
 
 // Connect to MongoDB
-mongoose.connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log('Database Connected'))
 .catch((err) => {
     console.error('Database Connection Error:', err);
@@ -31,7 +35,6 @@ mongoose.connect(MONGODB_URI)
 });
 
 // Start the server
-const PORT = 8000; // Default port, or set any other
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
